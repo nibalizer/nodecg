@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/nodecg/nodecg/master/src/favicon.ico">
-    <title>Making Dashboard Dialogs - Documentation</title>
+    <title>Quick Start - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -30,7 +30,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Making Dashboard Dialogs</h1>
+    <h1 class="page-title">Quick Start</h1>
     
 
     <section>
@@ -40,32 +40,42 @@
 </header>
 
 <article>
-    <p>Starting with NodeCG 0.7, all dashboard panels are iframes. This was done to provide full code and style encapsulation,
-eliminating the need for bundle authors to worry about what they are putting into the global scope with their panel.
-However, because every panel is an iframe, it is not possible for a panel to draw anything outside of its bounding box.
-This limitation made having dialogs and modals impossible, among other things. To address this, we created a dedicated
-system for displaying dialogs.</p>
-<p>A dialog is defined the same as any other dashboard panel would be in <a href="tutorial-5_manifest.html">package.json</a>, with an
-additional <code>dialog: true</code> property.</p>
-<h2 id="opening-dialogs">Opening dialogs</h2>
-<p>To open a dialog, add a <code>nodecg-dialog</code> attribute to any clickable element on one of your panels. For example, this
-<a href="https://elements.polymer-project.org/elements/paper-button"><code>&lt;paper-button&gt;</code></a> element will open the <code>edit-total</code> dialog when clicked:</p>
-<pre class="prettyprint source lang-html"><code>&lt;paper-button id=&quot;edit&quot; class=&quot;nodecg-configure&quot; nodecg-dialog=&quot;edit-total&quot;>Edit...&lt;/paper-button></code></pre><h2 id="closing-dialogs">Closing dialogs</h2>
-<p>By default, a dialog can only be closed by clicking outside of it. Optional confirmation and dismissal buttons can be
-added via <code>package.json</code>. See the <a href="tutorial-5_manifest.html">package.json tutorial</a> for information on the <code>dialogButtons</code>
-property.</p>
-<p>When a <code>confirm</code> or <code>dismiss</code> button is pressed, NodeCG will emit a <code>dialog-confirmed</code> or <code>dialog-dismissed</code> event
-on your dialog's <code>document</code>. For example:</p>
-<pre class="prettyprint source lang-html"><code>// bundles/my-bundle/dashboard/my-dialog.html
-&lt;script>
-    document.addEventListener('dialog-confirmed', function() {
-        // The user pressed the confirm button.
-    });
-
-    document.addEventListener('dialog-dismissed', function() {
-        // The user pressed the dismiss button.
-    });
-&lt;/script></code></pre>
+    <h2 id="examples">Examples</h2>
+<p>Before continuing, you may find it helpful to look over our <a href="https://github.com/nodecg/nodecg-simple-examples">collection of simple example bundles</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<ol>
+<li><p><a href="https://nodejs.org/en/">Install Node.js 8 or later</a>:</p>
+<ul>
+<li>This will also install the <code>npm</code> command, which will be used extensively in the following steps.</li>
+</ul>
+</li>
+<li><p>Install Bower, which is currently required by NodeCG:</p>
+<pre class="prettyprint source lang-bash"><code> npm install --global bower</code></pre><ul>
+<li>You do not need to use Bower in your bundles.</li>
+<li>This dependency on Bower will be removed in the future.</li>
+</ul>
+</li>
+<li><p>Use nodecg-cli to install an instance of NodeCG:</p>
+<pre class="prettyprint source lang-bash"><code> npm install --global nodecg-cli
+ mkdir nodecg
+ cd nodecg
+ nodecg setup</code></pre></li>
+<li><p>Use Yeoman and generator-nodecg to generate the beginnings of your new bundle:</p>
+<pre class="prettyprint source lang-bash"><code> npm install --global yo generator-nodecg
+ cd bundles
+ mkdir my-first-bundle
+ cd my-first
+ yo nodecg</code></pre><p> Answer the prompts one-by-one as they come up.</p>
+</li>
+<li><p>Once your template bundle has been generated, start NodeCG:</p>
+<pre class="prettyprint source lang-bash"><code> cd ../..
+ nodecg start</code></pre></li>
+<li><p>Open the NodeCG Dashboard, which will be located at <a href="http://localhost:9090">http://localhost:9090</a> by default. You should see a page like this:</p>
+<p> <img src="https://raw.githubusercontent.com/nodecg/nodecg/master/media/quickstart_dashboard.png" alt="Dashboard Screenshot"></p>
+</li>
+<li>That's it! You can click the &quot;Graphics&quot; button in the top right to see a list of graphics in your installed bundles.</li>
+</ol>
+<p>If you have more questions, want further guidance, or would just like to hang out with other NodeCG devs, <a href="https://discord.gg/NNmVz4x">join our Discord server</a>!</p>
 </article>
 
 </section>
@@ -75,7 +85,7 @@ on your dialog's <code>document</code>. For example:</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jul 11 2018 15:19:02 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jul 11 2018 15:19:01 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
