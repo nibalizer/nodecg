@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/nodecg/nodecg/master/src/favicon.ico">
+    <title>Migrating from 0.9 to 1.0 - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-1_what-is-nodecg.html">What is NodeCG?</a></li><li class="nav-item"><a href="tutorial-2_concepts-and-terminology.html">Concepts and Terminology</a></li><li class="nav-item"><a href="tutorial-3_quick-start.html">Quick Start</a></li><li class="nav-item"><a href="tutorial-4_security.html">Security & Authentication</a></li><li class="nav-item"><a href="tutorial-5_manifest.html">package.json Manifest</a></li><li class="nav-item"><a href="tutorial-6_nodecg-configuration.html">NodeCG Configuration</a></li><li class="nav-item"><a href="tutorial-7_using-npm.html">Using npm Dependencies</a></li><li class="nav-item"><a href="tutorial-8_using-bower.html">Using Bower Dependencies</a></li><li class="nav-item"><a href="tutorial-9_bundle-configuration.html">Bundle Configuration</a></li><li class="nav-item"><a href="tutorial-assets.html">Assets</a></li><li class="nav-item"><a href="tutorial-custom-routes.html">Custom Routes</a></li><li class="nav-item"><a href="tutorial-making-dialogs.html">Making Dashboard Dialogs</a></li><li class="nav-item"><a href="tutorial-migrating-0.7-to-0.8.html">Migrating from 0.7 to 0.8</a></li><li class="nav-item"><a href="tutorial-migrating-0.8-to-0.9.html">Migrating from 0.8 to 0.9</a></li><li class="nav-item"><a href="tutorial-migrating-0.9-to-1.0.html">Migrating from 0.9 to 1.0</a></li><li class="nav-item"><a href="tutorial-mounts.html">Mount folders as endpoints</a></li><li class="nav-item"><a href="tutorial-performance-tips.html">Performance Tips</a></li><li class="nav-item"><a href="tutorial-portable-nodecg.html">Portable NodeCG</a></li><li class="nav-item"><a href="tutorial-replicant-schemas.html">Replicant Validation</a></li><li class="nav-item"><a href="tutorial-screenshot-testing.html">Screenshot Testing Graphics</a></li><li class="nav-item"><a href="tutorial-sentry.html">Error Reporting with Sentry.io</a></li><li class="nav-item"><a href="tutorial-sounds.html">Sounds</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="NodeCG.html">NodeCG</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#.waitForReplicants">waitForReplicants</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#findCue">findCue</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#getDialog">getDialog</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#getDialogDocument">getDialogDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#getSocketIOServer">getSocketIOServer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#listenFor">listenFor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#log">log</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#mount">mount</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#playSound">playSound</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#readReplicant">readReplicant</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#Replicant">Replicant</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#sendMessage">sendMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#sendMessageToBundle">sendMessageToBundle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#stopAllSounds">stopAllSounds</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#stopSound">stopSound</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="NodeCG.html#unlisten">unlisten</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Migrating from 0.9 to 1.0</h1>
+    
+
+    <section>
+
+<header>
+    
+</header>
+
+<article>
+    <h2 id="breaking-changes">Breaking Changes</h2>
+<ul>
+<li><a href="#dialog-handlers"><strong>dashboard</strong>: The undocumented <code>[dialog-confirm]</code> and <code>[dialog-dismiss]</code> attribute click handlers have been removed.</a></li>
+<li><a href="#panel-click"><strong>dashboard</strong>: The undocumented (and broken) <code>panelClick</code> event has been removed.</a></li>
+<li><a href="#custom-cues"><strong>sounds:</strong> The undocumented customCues system has been removed.</a></li>
+<li><a href="#multiple-listeners"><strong>api:</strong> A given context (server, client) can now declare multiple listenFor handlers for a given message. Handlers are called in the order they were registered.</a></li>
+<li><a href="#intra-context-messaging"><strong>api:</strong> sendMessage can now trigger listenFor handlers in the same context (extension, webpage, etc).</a></li>
+<li><a href="#twitch-api"><strong>login:</strong> Twitch auth now uses the &quot;New Twitch API&quot;, instead of the deprecated &quot;v5&quot; API.</a></li>
+</ul>
+<h3 id="-a-name-dialog-handlers-a-undocumented-dialog-confirm-and-dialog-dismiss-attribute-click-handlers-have-been-removed"><a name="dialog-handlers"></a> Undocumented <code>[dialog-confirm]</code> and <code>[dialog-dismiss]</code> attribute click handlers have been removed</h3>
+<p>Previously, NodeCG had an undocumented feature where <em>any</em> element in a Dialog with a <code>[dialog-confirm]</code> or <code>[dialog-dismiss]</code> attribute would close the panel (with an appropriate <code>confirmed</code> or <code>dismissed</code> event) when clicked.</p>
+<p>This undocumented feature has been removed. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
+<h3 id="-a-name-panel-click-a-undocumented-and-broken-panelclick-event-has-been-removed"><a name="panel-click"></a> Undocumented (and broken) <code>panelClick</code> event has been removed</h3>
+<p>Previously, NodeCG had an undocumented feature where any click even on any panel (or dialog) would emit a <code>panelClick</code> event on that panel's <code>document</code>.</p>
+<p>This undocumented feature has been removed, and never really worked properly to begin with. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
+<h3 id="-a-name-custom-cues-a-undocumented-customcues-system-has-been-removed"><a name="custom-cues"></a> Undocumented customCues system has been removed</h3>
+<p>Previously, NodeCG had an undocumented and extremely complex feature for defining and editing Sound Cues during runtime.</p>
+<p>This undocumented feature has been removed. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
+<h3 id="-a-name-multiple-listeners-a-multiple-listenfor-handlers-for-a-given-message"><a name="multiple-listeners"></a> Multiple listenFor handlers for a given message</h3>
+<p>Previously, NodeCG only allowed your bundle to specify one <code>listenFor</code> handler, per message, per context.</p>
+<p>Now, NodeCG lets you define as many <code>listenFor</code> handlers as you want, for any message, in any location.</p>
+<p>However, server-side <code>listenFor</code> handlers must be careful to not call an <code>acknowledgement</code> more than once:</p>
+<pre class="prettyprint source lang-js"><code>// nodecg/bundles/your-bundle
+module.exports = function (nodecg) {
+    nodecg.listenFor('example', (data, ack) => {
+        if (ack && !ack.handled) {
+            ack('foo');
+        }
+    });
+};</code></pre><pre class="prettyprint source lang-html"><code>// nodecg/bundles/your-bundle/graphics/example.html
+&lt;script>
+nodecg.sendMessage('example', 'hello', (error, response) => {
+    console.log(response); // => Will log &quot;foo&quot;.
+});
+&lt;/script></code></pre><p>Calling an <code>acknowledgement</code> more than once will throw an error.</p>
+<p>In short: <strong>most bundles won't need to change any of their code</strong> to be compatible with this change, but you should give everything a once-over to make sure things aren't behaving unexpectedly due to this new behavior.</p>
+<h3 id="-a-name-intra-context-messaging-a-sendmessage-can-now-trigger-listenfor-handlers-in-the-same-context"><a name="intra-context-messaging"></a> sendMessage can now trigger listenFor handlers in the same context</h3>
+<p>Previously, NodeCG messages were inter-context only. That meant that they were <em>only</em> sent out over the network, and were not sent to other listeners in the same process context (extension, graphic, panel, etc).</p>
+<p>Now, NodeCG sends messages to every listener, regardless of location. This means that code like the following will now work as expected:</p>
+<pre class="prettyprint source lang-js"><code>// nodecg/bundles/your-bundle/extension.js
+module.exports = function (nodecg) {
+    nodecg.sendMessage('hello', 'Hi there!');
+};</code></pre><pre class="prettyprint source lang-js"><code>// nodecg/bundles/my-bundle/extension.js
+module.exports = function (nodecg) {
+    nodecg.listenFor('hello', 'your-bundle', data => {
+        console.log(data); // => Will print &quot;Hi there!&quot;
+    });
+}</code></pre><p>A side-effect of this change is that it is no longer guaranteed that a server-side <code>listenFor</code> handler will receive an <code>acknowledgement</code> callback as its second argument. You should always check for the presence of an <code>acknowledgement</code> before attempting to call it:</p>
+<pre class="prettyprint source lang-js"><code>// nodecg/bundles/your-bundle
+module.exports = function (nodecg) {
+    nodecg.listenFor('example', (data, ack) => {
+        if (ack && !ack.handled) {
+            ack('foo');
+        }
+    });
+};</code></pre><h3 id="-a-name-twitch-api-a-twitch-auth-now-uses-the-new-twitch-api-instead-of-the-deprecated-v5-api"><a name="twitch-api"></a> Twitch auth now uses the &quot;New Twitch API&quot;, instead of the deprecated &quot;v5&quot; API</h3>
+<p>Previously, NodeCG used the deprecated &quot;v5&quot; Twitch API.</p>
+<p>Now, NodeCG uses the &quot;New Twitch API&quot;. The only tangible result of this change for NodeCG is that the format of the <code>login.twitch.scope</code> config parameter has changed. Please see <a href="https://dev.twitch.tv/docs/authentication/#scopes">https://dev.twitch.tv/docs/authentication/#scopes</a> for documentation on this new format.</p>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jul 11 2018 17:39:33 GMT-0500 (Central Daylight Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
