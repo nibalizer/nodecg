@@ -29,6 +29,12 @@ a:hover {
   text-decoration: underline
 }
 
+a.is-current {
+  color: #888;
+  font-weight: bold;
+  pointer-events: none;
+}
+
 p, ul, ol, blockquote {
   margin-bottom: 1em;
 }
@@ -247,10 +253,12 @@ nav li {
   font-weight: bold;
 }
 
+.nav-heading + .nav-heading {
+  margin-top: 0;
+}
+
 .nav-heading a {
-  color: #888;
-  font-size: 14px;
-  display: inline-block;
+  font-weight: 400;
 }
 
 .nav-item-type {
