@@ -74,7 +74,7 @@
 <p>NodeCG is a broadcast graphics framework and application. It enables you to write complex, dynamic broadcast graphics
 using the web platform. NodeCG has no graphics or drawing primitives of its own. Instead, NodeCG provides
 a structure for your code and an API to facilitate moving data between the dashboard, the server, and your graphics.
-It makes no assumptions about how to best code a graphic, and gives you complete freedom to use whatever libraries, 
+It makes no assumptions about how to best code a graphic, and gives you complete freedom to use whatever libraries,
 frameworks, tools, and methodologies you want. As such, NodeCG graphics can be rendered in any environment that
 can render HTML, including:</p>
 <ul>
@@ -95,20 +95,30 @@ Those expecting to download NodeCG and use off-the-shelf bundles to get a comple
 without writing any code may be disappointed.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
-<li><a href="#install">Install</a><ul>
+<li><a href="#install">Install</a>
+<ul>
 <li><a href="#installing-bundles">Installing bundles</a></li>
 </ul>
 </li>
-<li><a href="#usage">Usage</a><ul>
+<li><a href="#usage">Usage</a>
+<ul>
 <li><a href="#configuration">Configuration</a></li>
 </ul>
 </li>
 <li><a href="#bundles">Bundles</a></li>
 <li><a href="#concepts-and-terminology">Concepts and Terminology</a></li>
+<li><a href="#goals">Goals</a>
+<ul>
+<li><a href="#-make-broadcast-graphics-also-known-as-character-generation-or-cg-more-accessible">&gt; Make broadcast graphics (also known as &quot;character generation&quot; or &quot;CG&quot;) more accessible.</a></li>
+<li><a href="#-remain-as-close-to-the-web-platform-as-possible">&gt; Remain as close to the web platform as possible.</a></li>
+<li><a href="#-support-broadcasts-of-any-size-and-ambition">&gt; Support broadcasts of any size and ambition.</a></li>
+</ul>
+</li>
 <li><a href="#maintainers">Maintainers</a></li>
 <li><a href="#designers">Designers</a></li>
 <li><a href="#acknowledgements">Acknowledgements</a></li>
-<li><a href="#contribute">Contribute</a><ul>
+<li><a href="#contribute">Contribute</a>
+<ul>
 <li><a href="#building-and-viewing-the-docs-locally">Building and viewing the docs locally</a></li>
 <li><a href="#running-tests-locally">Running tests locally</a></li>
 <li><a href="#code-of-conduct">Code of Conduct</a></li>
@@ -116,14 +126,16 @@ without writing any code may be disappointed.</p>
 </li>
 </ul>
 <h2 id="install">Install</h2>
-<p>Install <a href="http://nodejs.org/">Node.js (version 8.3 or greater) &amp; npm (version 2 or greater)</a>.  </p>
+<p>Install <a href="http://nodejs.org/">Node.js (version 8.3 or greater) &amp; npm (version 2 or greater)</a>.</p>
 <p>Then, run the following commands from a terminal (command prompt):</p>
 <pre class="prettyprint source lang-sh"><code>npm install -g bower
 git clone https://github.com/nodecg/nodecg.git
 cd nodecg
 npm install --production
 bower install
-node index.js</code></pre><p>Looking to get started developing bundles? Check out the <a href="https://nodecg.com/tutorial-3_quick-start.html">Quick Start tutorial</a>.</p>
+node index.js
+</code></pre>
+<p>Looking to get started developing bundles? Check out the <a href="https://nodecg.com/tutorial-3_quick-start.html">Quick Start tutorial</a>.</p>
 <p>To run NodeCG in production, <a href="https://github.com/Unitech/pm2">pm2</a> is recommended.</p>
 <h3 id="installing-bundles">Installing bundles</h3>
 <p>NodeCG's individual graphics packages are called <em>bundles</em>. They can be installed either from the command-line
@@ -132,10 +144,16 @@ node index.js</code></pre><p>Looking to get started developing bundles? Check ou
 You will need to install <a href="https://www.npmjs.com/package/nodecg-cli">nodecg-cli</a> before you can use the <code>nodecg</code>
 terminal commands.</p>
 <p>(Once you have <a href="https://www.npmjs.com/package/nodecg-cli">nodecg-cli</a> installed) To install a bundle from Github, enter the owner and repository name:</p>
-<pre class="prettyprint source lang-sh"><code>nodecg install lange/lange-notify</code></pre><p>... to install a bundle from Bitbucket, enter the owner and repository name prefixed with <code>bitbucket:</code></p>
-<pre class="prettyprint source lang-sh"><code>nodecg install bitbucket:username/repo-name</code></pre><p>... to install a bundle from any other git provider, enter the git URL:</p>
-<pre class="prettyprint source lang-sh"><code>nodecg install https://gitlab.com/username/repo-name.git</code></pre><p>Bundles are just directories inside the <code>./bundles</code> folder. 
-They can always be added and removed by simply moving them into or out of that folder. 
+<pre class="prettyprint source lang-sh"><code>nodecg install lange/lange-notify
+</code></pre>
+<p>... to install a bundle from Bitbucket, enter the owner and repository name prefixed with <code>bitbucket:</code></p>
+<pre class="prettyprint source lang-sh"><code>nodecg install bitbucket:username/repo-name
+</code></pre>
+<p>... to install a bundle from any other git provider, enter the git URL:</p>
+<pre class="prettyprint source lang-sh"><code>nodecg install https://gitlab.com/username/repo-name.git
+</code></pre>
+<p>Bundles are just directories inside the <code>./bundles</code> folder.
+They can always be added and removed by simply moving them into or out of that folder.
 Avoid installing or uninstalling bundles while NodeCG is running.</p>
 <h2 id="usage">Usage</h2>
 <ul>
@@ -159,11 +177,27 @@ See the <a href="http://nodecg.com/tutorial-6_nodecg-configuration.html">NodeCG 
 <p>If you wish to quickly start a new bundle from a template, check out the <a href="https://nodecg.com/tutorial-3_quick-start.html">Quick Start tutorial</a>.</p>
 <h2 id="concepts-and-terminology">Concepts and Terminology</h2>
 <p>A breakdown of the terminology and concepts used inside NodeCG can be found <a href="https://nodecg.com/tutorial-2_concepts-and-terminology.html">here, on the NodeCG website</a>.</p>
+<h2 id="goals">Goals</h2>
+<p>The NodeCG project exists to accomplish the following goals:</p>
+<ul>
+<li>Make broadcast graphics (also known as &quot;character generation&quot; or &quot;CG&quot;) more accessible.</li>
+<li>Remain as close to the web platform as possible.</li>
+<li>Support broadcasts of any size and ambition.</li>
+</ul>
+<p>Let's unpack what these statements mean:</p>
+<h3 id="%3E-make-broadcast-graphics-(also-known-as-%22character-generation%22-or-%22cg%22)-more-accessible.">&gt; Make broadcast graphics (also known as &quot;character generation&quot; or &quot;CG&quot;) more accessible.</h3>
+<p>Historically, broadcast graphics have been expensive. They either required expensive hardware, expensive software, or both. NodeCG was originally created to provide real-time broadcast graphics for Tip of the Hats, which is an all-volunteer charity fundraiser that had a budget of $0 for its first several years.</p>
+<p>Now, it is possible to create an ambitious broadcast using entirely free software and consumer hardware. The NodeCG project embraces this democratization of broadcast technology.</p>
+<h3 id="%3E-remain-as-close-to-the-web-platform-as-possible.">&gt; Remain as close to the web platform as possible.</h3>
+<p>NodeCG graphics are just webpages. There is absolutely nothing special or unique about them. This is their greatest strength.</p>
+<p>By building on the web platform, and not building too many abstractions on top of it, people developing broadcast graphics with NodeCG have access to the raw potential of the web. New APIs and capabilities are continually being added to the web platform, and NodeCG developers should have access to the entirety of what the web can offer.</p>
+<h3 id="%3E-support-broadcasts-of-any-size-and-ambition.">&gt; Support broadcasts of any size and ambition.</h3>
+<p>NodeCG's roots are in small broadcasts with no budget. More recently, NodeCG has begun seeing use in increasingly elaborate productions. We believe that one set of tools can and should be able to scale up from the smallest show all the way to the biggest fathomable show. Whether you're using OBS for everything, or a hardware switcher with a traditional key/fill workflow, NodeCG can be a part of any broadcast graphics system.</p>
 <h2 id="maintainers">Maintainers</h2>
 <ul>
-<li><a href="https://alexvan.camp">Alex &quot;Lange&quot; Van Camp</a> </li>
-<li><a href="https://mattmcn.com/">Matt &quot;Bluee&quot; McNamara</a>  </li>
-<li><a href="https://hoish.in/">Keiichiro &quot;Hoishin&quot; Amemiya</a>  </li>
+<li><a href="https://alexvan.camp">Alex &quot;Lange&quot; Van Camp</a></li>
+<li><a href="https://mattmcn.com/">Matt &quot;Bluee&quot; McNamara</a></li>
+<li><a href="https://hoish.in/">Keiichiro &quot;Hoishin&quot; Amemiya</a></li>
 </ul>
 <h2 id="designers">Designers</h2>
 <ul>
@@ -171,13 +205,13 @@ See the <a href="http://nodecg.com/tutorial-6_nodecg-configuration.html">NodeCG 
 </ul>
 <h2 id="acknowledgements">Acknowledgements</h2>
 <ul>
-<li><a href="https://github.com/atmosfar">Atmo</a>, original dashboard concept and code, the inspiration for toth-overlay  </li>
+<li><a href="https://github.com/atmosfar">Atmo</a>, original dashboard concept and code, the inspiration for toth-overlay</li>
 <li><a href="http://alexvan.camp">Alex &quot;Lange&quot; Van Camp</a>, designer &amp; developer of <a href="https://github.com/TipoftheHats/toth-overlay">toth-overlay</a>, the base on which NodeCG was built</li>
 </ul>
 <h2 id="contribute">Contribute</h2>
 <p>Please contribute! This is an open source project. If you would like to report a bug or suggest a feature, <a href="https://github.com/nodecg/nodecg/issues">open an issue</a>. Or, to open a Pull Request:</p>
 <ol>
-<li>Fork it (<a href="http://github.com/nodecg/nodecg/fork">http://github.com/nodecg/nodecg/fork</a>)</li>
+<li>Fork it (<a href="http:%5C/%5C/github.com/nodecg/nodecg/fork">http://github.com/nodecg/nodecg/fork</a>)</li>
 <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
@@ -194,7 +228,9 @@ See the <a href="http://nodecg.com/tutorial-6_nodecg-configuration.html">NodeCG 
 <p>Documentation contributions are always welcome and very appreciated!</p>
 <p>NodeCG's documentation site, <a href="http://nodecg.com">nodecg.com</a>, is automatically generated based on NodeCG's JSDoc comments and the markdown files in the <a href="https://github.com/nodecg/nodecg/tree/master/tutorials"><code>tutorials</code></a> folder. The <a href="#table-of-contents">table of contents</a> in this README is also automatically generated.</p>
 <p>To build the docs, run the following commands (after you have cloned NodeCG and installed its dependencies via <code>npm install</code>):</p>
-<pre class="prettyprint source lang-bash"><code>npm run docs:build</code></pre><p>After that, you can open <code>docs/index.html</code> directly in your web browser.</p>
+<pre class="prettyprint source lang-bash"><code>npm run docs:build
+</code></pre>
+<p>After that, you can open <code>docs/index.html</code> directly in your web browser.</p>
 <p>Once you've made your changes, follow the steps above in the <a href="#contribute">Contribute</a> section to open a pull request.</p>
 <h3 id="running-tests-locally">Running tests locally</h3>
 <p>You no longer need Selenium to run browser integration tests. Chromium is installed with
@@ -214,7 +250,7 @@ See the <a href="http://nodecg.com/tutorial-6_nodecg-configuration.html">NodeCG 
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 19 2019 13:40:03 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -56,15 +56,18 @@
 <a href="https://webpack.js.org/concepts/why-webpack/">Why webpack</a>.</p>
 <p>There are currently three JavaScript bundlers.</p>
 <ul>
-<li><a href="https://github.com/webpack/webpack">webpack</a><ul>
+<li><a href="https://github.com/webpack/webpack">webpack</a>
+<ul>
 <li>By far the most used bundler with a lot of community made extensions</li>
 </ul>
 </li>
-<li><a href="https://github.com/rollup/rollup">rollup</a><ul>
+<li><a href="https://github.com/rollup/rollup">rollup</a>
+<ul>
 <li>Primarily used by libraries like React, Vue</li>
 </ul>
 </li>
-<li><a href="https://github.com/parcel-bundler/parcel">parcel</a><ul>
+<li><a href="https://github.com/parcel-bundler/parcel">parcel</a>
+<ul>
 <li>New bundler famous for zero-config, and super fast building process</li>
 </ul>
 </li>
@@ -86,7 +89,9 @@ directory. Your project would look like this</p>
 |- extension
 |- schemas
 |- src
-|- package.json</code></pre><p>When you run parcel, it will make <code>dashboard</code> and <code>graphics</code> directory and
+|- package.json
+</code></pre>
+<p>When you run parcel, it will make <code>dashboard</code> and <code>graphics</code> directory and
 output bundle result into them.</p>
 <p>(After running parcel)</p>
 <pre class="prettyprint source"><code>foo-layouts
@@ -104,7 +109,9 @@ output bundle result into them.</p>
   |- styles.03nsh2s.css
   |- ds1.rssiahs.js
   |- sd1.4jc71nx.js
-  |- background.d8frsis.png</code></pre><p>The random string for each generated files are automatically generated to
+  |- background.d8frsis.png
+</code></pre>
+<p>The random string for each generated files are automatically generated to
 refresh cache when the files change.</p>
 <h2 id="setup">Setup</h2>
 <p>As I said, parcel is (literally) zero-configuration required. It even installs
@@ -113,12 +120,16 @@ missing packages for you if there is any.</p>
 <h4 id="locally">Locally</h4>
 <pre class="prettyprint source lang-sh"><code>npm install --save-dev parcel-bundler
 # or
-yarn add -D parcel-bundler</code></pre><p>The <code>parcel</code> command will be available locally. You can run it either adding
+yarn add -D parcel-bundler
+</code></pre>
+<p>The <code>parcel</code> command will be available locally. You can run it either adding
 npm scripts, or <code>npx parcel</code>/<code>yarn parcel</code>.</p>
 <h4 id="globally">Globally</h4>
 <pre class="prettyprint source lang-sh"><code>npm install -g parcel-bundler
 # or
-yarn global add parcel-bundler</code></pre><p>With this, <code>parcel</code> command should be available globally. Just run <code>parcel</code> to
+yarn global add parcel-bundler
+</code></pre>
+<p>With this, <code>parcel</code> command should be available globally. Just run <code>parcel</code> to
 run the bundler.</p>
 <h3 id="make-an-entrypoint">Make an entrypoint</h3>
 <p>When building front-end, HTML file is usually used as entrypoint. You can just
@@ -135,10 +146,16 @@ use your HTML file with your scripts and stylesheets imported.</p>
     &lt;!-- Or a lot of pre-defined elements -->
     &lt;script src=&quot;./index.js&quot;>&lt;/script>
   &lt;/body>
-&lt;/html></code></pre><p>The entrypoint HTML file will also be compiled in the bundler. So you can many
+&lt;/html>
+</code></pre>
+<p>The entrypoint HTML file will also be compiled in the bundler. So you can many
 kind of files in the <code>script</code> tag. Parcel will automatically detect file format
 and use appropriate library/compiler to bundle the file.</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./main.coffee&quot;>&lt;/script></code></pre><pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./app.tsx&quot;>&lt;/script></code></pre><p>Or the entrypoint doesn't even have to be an HTML file. For example, you can use
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./main.coffee&quot;>&lt;/script>
+</code></pre>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;./app.tsx&quot;>&lt;/script>
+</code></pre>
+<p>Or the entrypoint doesn't even have to be an HTML file. For example, you can use
 Pug to have common parts of HTML file into one file.</p>
 <pre class="prettyprint source lang-pug"><code>doctype html
 html
@@ -147,13 +164,21 @@ html
     include lib/common.pug
   body
     div(id=&quot;ds&quot;)
-    script(src=&quot;./views/ds.ts&quot;)</code></pre><h3 id="run-the-command">Run the command</h3>
+    script(src=&quot;./views/ds.ts&quot;)
+</code></pre>
+<h3 id="run-the-command">Run the command</h3>
 <p>For development, with file change detection and hot-reloading:</p>
-<pre class="prettyprint source lang-sh"><code>parcel watch src/dashboard/index.html --out-dir dashboard --public-url ./</code></pre><p>For production build, with optimized output:</p>
-<pre class="prettyprint source lang-sh"><code>parcel build src/dashboard/index.html --out-dir dashboard --public-url ./</code></pre><p>(Replace <code>src/dashboard/index.html</code> with your entrypoint files.)</p>
+<pre class="prettyprint source lang-sh"><code>parcel watch src/dashboard/index.html --out-dir dashboard --public-url ./
+</code></pre>
+<p>For production build, with optimized output:</p>
+<pre class="prettyprint source lang-sh"><code>parcel build src/dashboard/index.html --out-dir dashboard --public-url ./
+</code></pre>
+<p>(Replace <code>src/dashboard/index.html</code> with your entrypoint files.)</p>
 <p>You can use glob pattern to use multiple entrypoints, if you have multiple pages
 to compile</p>
-<pre class="prettyprint source lang-sh"><code>parcel build src/graphics/*.html --out-dir dashboard --public-url ./</code></pre><p>Details described in <a href="https://parceljs.org/cli.html">the reference</a>.</p>
+<pre class="prettyprint source lang-sh"><code>parcel build src/graphics/*.html --out-dir dashboard --public-url ./
+</code></pre>
+<p>Details described in <a href="https://parceljs.org/cli.html">the reference</a>.</p>
 <h3 id="recommended-configuration">Recommended Configuration</h3>
 <p>Even though it already works for most cases (!), a bit of configuration might be
 recommended/required.</p>
@@ -167,7 +192,9 @@ just Chrome. To do so, add <code>browserslist</code> property to <code>package.j
   // ...
   &quot;browserslist&quot;: &quot;last 2 chrome versions&quot;,
   &quot;nodecg&quot;: //...
-}</code></pre><p>Refer to <a href="https://github.com/browserslist/browserslist#full-list">this page</a> for
+}
+</code></pre>
+<p>Refer to <a href="https://github.com/browserslist/browserslist#full-list">this page</a> for
 detailed <code>browserslist</code> syntax.</p>
 <h3 id="going-further">Going further</h3>
 <p>Due to the huge amount of features parcel offers out of box, at this point you
@@ -189,7 +216,7 @@ supported.</p>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 19 2019 13:40:03 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

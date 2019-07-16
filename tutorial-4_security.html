@@ -57,7 +57,8 @@
 <li><a href="#auth-levels">What levels of authorization does NodeCG have?</a></li>
 <li><a href="#auth-mechanics">How are users authorized?</a></li>
 <li><a href="#leak-response">What do I do if one of my keys got leaked?</a></li>
-<li><a href="#enabling-login-security">How do I enable login security?</a><ul>
+<li><a href="#enabling-login-security">How do I enable login security?</a>
+<ul>
 <li><a href="#local-auth">Local Auth</a></li>
 <li><a href="#twitch-auth">Twitch Auth</a></li>
 <li><a href="#steam-auth">Steam Auth</a></li>
@@ -65,10 +66,10 @@
 </li>
 <li><a href="#enabling-https">How do I enable HTTPS/SSL encryption?</a></li>
 </ul>
-<h2 id="-a-name-insecure-by-default-a-is-nodecg-secure-by-default-"><a name="insecure-by-default"></a> Is NodeCG secure by default?</h2>
+<h2 id="is-nodecg-secure-by-default%3F"><a name="insecure-by-default"></a> Is NodeCG secure by default?</h2>
 <p><strong>No.</strong> By default, NodeCG has no authorization or authentication of any kind. To enable basic authentication, see the <a href="#enabling-login-security">How do I enable login security?</a> section.</p>
 <p><strong>Do not</strong> put an unsecured NodeCG instance on the internet or a public network. Unsecured instances should only be used for local development and on trusted LANs.</p>
-<h2 id="-a-name-auth-levels-a-what-levels-of-authorization-does-nodecg-have-"><a name="auth-levels"></a> What levels of authorization does NodeCG have?</h2>
+<h2 id="what-levels-of-authorization-does-nodecg-have%3F"><a name="auth-levels"></a> What levels of authorization does NodeCG have?</h2>
 <p>NodeCG has a fairly naive permissions model. There are only two permission levels:</p>
 <ol>
 <li>Completely unauthorized, with no access to anything</li>
@@ -79,23 +80,25 @@
 <ul>
 <li>Read/write access to every Replicant in every bundle</li>
 <li>Read/write access to every message in every bundle</li>
-<li>Read access to the full config of every bundle<ul>
+<li>Read access to the full config of every bundle
+<ul>
 <li>Your bundle configs may include sensitive API keys and passwords. Every user of your NodeCG deployment will have full access to these config values.</li>
 </ul>
 </li>
 </ul>
 <p>Therefore, untrusted users must never be given any degree of authorization in your NodeCG instance. They must never be allowed to successfully authenticate with the socket server. If they do, they will have full control over your entire NodeCG instance.</p>
-<h2 id="-a-name-auth-mechanics-a-how-are-users-authorized-"><a name="auth-mechanics"></a> How are users authorized?</h2>
+<h2 id="how-are-users-authorized%3F"><a name="auth-mechanics"></a> How are users authorized?</h2>
 <p>NodeCG has two ways of authorizing a user:</p>
 <ol>
 <li>Reading the value of their <code>socketToken</code> cookie.</li>
-<li>Reading the value of their <code>key</code> URL query parameter.<ul>
+<li>Reading the value of their <code>key</code> URL query parameter.
+<ul>
 <li>This is why the &quot;COPY URL&quot; buttons on the &quot;Graphics&quot; tab of the dashboard include a <code>?key=YOUR_KEY</code> at the end of them. It is necessary for the pages to load successfully in OBS.</li>
 </ul>
 </li>
 </ol>
 <p>Anyone who gets sent a link which includes a <code>key</code> will have full authorization and access to your NodeCG instance. Treat these links with the same secrecy as you would a password, because that's essentially what they are.</p>
-<h2 id="-a-name-leak-response-a-what-do-i-do-if-one-of-my-keys-got-leaked-"><a name="leak-response"></a> What do I do if one of my keys got leaked?</h2>
+<h2 id="what-do-i-do-if-one-of-my-keys-got-leaked%3F"><a name="leak-response"></a> What do I do if one of my keys got leaked?</h2>
 <ol>
 <li>Have the owner of the leaked key navigate to the &quot;Settings&quot; tab on the Dashboard.</li>
 <li>Click &quot;RESET KEY&quot;, and accept the confirmation dialog.</li>
@@ -107,7 +110,7 @@
 <li>Either completely delete this file (which will log out every user and reset their keys), or edit out the specific line containing the key which was leaked.</li>
 <li>Restart NodeCG.</li>
 </ol>
-<h2 id="-a-name-enabling-login-security-a-how-do-i-enable-login-security-"><a name="enabling-login-security"></a> How do I enable login security?</h2>
+<h2 id="how-do-i-enable-login-security%3F"><a name="enabling-login-security"></a> How do I enable login security?</h2>
 <p>NodeCG has support for three authentication providers:</p>
 <ul>
 <li><a href="#local-auth">Local Username/Password Auth</a></li>
@@ -115,7 +118,7 @@
 <li><a href="#steam-auth">Steam Auth</a></li>
 </ul>
 <p>You may have multiple authentication providers enabled simultaneously.</p>
-<h3 id="-a-name-local-auth-a-local-auth"><a name="local-auth"></a> Local Auth</h3>
+<h3 id="local-auth"><a name="local-auth"></a> Local Auth</h3>
 <p>Configure your <code>nodecg/cfg/nodecg.json</code> as such:</p>
 <pre class="prettyprint source lang-json"><code>{
   &quot;login&quot;: {
@@ -135,7 +138,9 @@
       ]
     }
   }
-}</code></pre><p>Local authentication also support password hashing by using HMAC. In order to use a password hash, fill the <code>password</code> property with the format <code>&lt;type&gt;:&lt;hash&gt;</code> where <code>&lt;type&gt;</code> is the type (SHA-256, RIPEMD, Whirlpool, ...) and <code>&lt;hash&gt;</code> a valid password hash.</p>
+}
+</code></pre>
+<p>Local authentication also support password hashing by using HMAC. In order to use a password hash, fill the <code>password</code> property with the format <code>&lt;type&gt;:&lt;hash&gt;</code> where <code>&lt;type&gt;</code> is the type (SHA-256, RIPEMD, Whirlpool, ...) and <code>&lt;hash&gt;</code> a valid password hash.</p>
 <p>For generating a valid password hash, you must use <code>sessionSecret</code> as secret key.
 If you're looking for a HMAC hash generator, you can use tools like <a href="https://wtools.io/generate-hmac-hash">wtools.io</a> for example.</p>
 <p>Currently, only native Node.js algorithms are supported.</p>
@@ -158,17 +163,21 @@ If you're looking for a HMAC hash generator, you can use tools like <a href="htt
       ]
     }
   }
-}</code></pre><h3 id="-a-name-twitch-auth-a-twitch-auth"><a name="twitch-auth"></a> Twitch Auth</h3>
+}
+</code></pre>
+<h3 id="twitch-auth"><a name="twitch-auth"></a> Twitch Auth</h3>
 <ol>
 <li><a href="https://glass.twitch.tv/console/apps/create">Create a new application on your Twitch Developer Dashboard</a></li>
 <li>Give it whatever values you want for Name, Category, and Other Details</li>
-<li>Set the OAuth Redirect URL to <code>https://YOUR_DEPLOYMENT_URL/login/auth/twitch</code>.<ul>
+<li>Set the OAuth Redirect URL to <code>https://YOUR_DEPLOYMENT_URL/login/auth/twitch</code>.
+<ul>
 <li>If you're testing locally, use <code>http://localhost:9090/login/auth/twitch</code></li>
 </ul>
 </li>
 <li>Save your Client ID for the next step</li>
 <li>Click &quot;New Secret&quot;, and save your client secret for the next step</li>
-<li>Configure your <code>nodecg/cfg/nodecg.json</code> as such:<ul>
+<li>Configure your <code>nodecg/cfg/nodecg.json</code> as such:
+<ul>
 <li>See the <a href="https://dev.twitch.tv/docs/authentication/#scopes">Twitch Dev docs for the list of available scopes</a>.</li>
 </ul>
 </li>
@@ -189,10 +198,13 @@ If you're looking for a HMAC hash generator, you can use tools like <a href="htt
       ]
     }
   }
-}</code></pre><h3 id="-a-name-steam-auth-a-steam-auth"><a name="steam-auth"></a> Steam Auth</h3>
+}
+</code></pre>
+<h3 id="steam-auth"><a name="steam-auth"></a> Steam Auth</h3>
 <ol>
 <li><a href="https://steamcommunity.com/dev/apikey">Create/copy your Steam Web API Key</a></li>
-<li>Obtain the SteamID64 string for each of the accounts you wish to allow.<ul>
+<li>Obtain the SteamID64 string for each of the accounts you wish to allow.
+<ul>
 <li>https://steamid.io/ is one tool for looking these up.</li>
 </ul>
 </li>
@@ -212,12 +224,16 @@ If you're looking for a HMAC hash generator, you can use tools like <a href="htt
       ]
     }
   }
-}</code></pre><h2 id="-a-name-enabling-https-a-how-do-i-enable-https-ssl-encryption-"><a name="enabling-https"></a> How do I enable HTTPS/SSL encryption?</h2>
+}
+</code></pre>
+<h2 id="how-do-i-enable-https%2Fssl-encryption%3F"><a name="enabling-https"></a> How do I enable HTTPS/SSL encryption?</h2>
 <ol>
-<li>Create an SSL certificate if you don't already have one.<ul>
+<li>Create an SSL certificate if you don't already have one.</li>
+</ol>
+<ul>
 <li>Creating an SSL cert is out of the scope of this tutorial. You may need to do some Googling if you are unfamiliar with this process.</li>
 </ul>
-</li>
+<ol start="2">
 <li>Configure your <code>nodecg/cfg/nodecg.json</code> as such (passphrase is only required if you created your key with one):</li>
 <li>Restart NodeCG, and confirm that your instance is accessible via HTTPS.</li>
 </ol>
@@ -227,8 +243,9 @@ If you're looking for a HMAC hash generator, you can use tools like <a href="htt
         &quot;keyPath&quot;: &quot;C:\\example\\path\\your-cert-key.key&quot;,
         &quot;certificatePath&quot;: &quot;C:\\example\\path\\your-cert.crt&quot;,
         &quot;passphrase&quot;: &quot;this is my example passphrase&quot;
-    }
-}</code></pre>
+	}
+}
+</code></pre>
 </article>
 
 </section>
@@ -238,7 +255,7 @@ If you're looking for a HMAC hash generator, you can use tools like <a href="htt
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 19 2019 13:40:03 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

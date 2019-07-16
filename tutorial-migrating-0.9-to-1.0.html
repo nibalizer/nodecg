@@ -61,16 +61,16 @@
 <li><a href="#intra-context-messaging"><strong>api:</strong> sendMessage can now trigger listenFor handlers in the same context (extension, webpage, etc).</a></li>
 <li><a href="#twitch-api"><strong>login:</strong> Twitch auth now uses the &quot;New Twitch API&quot;, instead of the deprecated &quot;v5&quot; API.</a></li>
 </ul>
-<h3 id="-a-name-dialog-handlers-a-undocumented-dialog-confirm-and-dialog-dismiss-attribute-click-handlers-have-been-removed"><a name="dialog-handlers"></a> Undocumented <code>[dialog-confirm]</code> and <code>[dialog-dismiss]</code> attribute click handlers have been removed</h3>
+<h3 id="undocumented-%5Bdialog-confirm%5D-and-%5Bdialog-dismiss%5D-attribute-click-handlers-have-been-removed"><a name="dialog-handlers"></a> Undocumented <code>[dialog-confirm]</code> and <code>[dialog-dismiss]</code> attribute click handlers have been removed</h3>
 <p>Previously, NodeCG had an undocumented feature where <em>any</em> element in a Dialog with a <code>[dialog-confirm]</code> or <code>[dialog-dismiss]</code> attribute would close the panel (with an appropriate <code>confirmed</code> or <code>dismissed</code> event) when clicked.</p>
 <p>This undocumented feature has been removed. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
-<h3 id="-a-name-panel-click-a-undocumented-and-broken-panelclick-event-has-been-removed"><a name="panel-click"></a> Undocumented (and broken) <code>panelClick</code> event has been removed</h3>
+<h3 id="undocumented-(and-broken)-panelclick-event-has-been-removed"><a name="panel-click"></a> Undocumented (and broken) <code>panelClick</code> event has been removed</h3>
 <p>Previously, NodeCG had an undocumented feature where any click event on any panel (or dialog) would emit a <code>panelClick</code> event on that panel's <code>document</code>.</p>
 <p>This undocumented feature has been removed, and never really worked properly to begin with. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
-<h3 id="-a-name-custom-cues-a-undocumented-customcues-system-has-been-removed"><a name="custom-cues"></a> Undocumented customCues system has been removed</h3>
+<h3 id="undocumented-customcues-system-has-been-removed"><a name="custom-cues"></a> Undocumented customCues system has been removed</h3>
 <p>Previously, NodeCG had an undocumented and extremely complex feature for defining and editing Sound Cues during runtime.</p>
 <p>This undocumented feature has been removed. If your bundle relied on it, you will need to re-implement similar functionality in your bundle's code.</p>
-<h3 id="-a-name-multiple-listeners-a-multiple-listenfor-handlers-for-a-given-message"><a name="multiple-listeners"></a> Multiple listenFor handlers for a given message</h3>
+<h3 id="multiple-listenfor-handlers-for-a-given-message"><a name="multiple-listeners"></a> Multiple listenFor handlers for a given message</h3>
 <p>Previously, NodeCG only allowed your bundle to specify one <code>listenFor</code> handler, per message, per context.</p>
 <p>Now, NodeCG lets you define as many <code>listenFor</code> handlers as you want, for any message, in any location.</p>
 <p>However, server-side <code>listenFor</code> handlers must be careful to not call an <code>acknowledgement</code> more than once:</p>
@@ -81,25 +81,33 @@ module.exports = function (nodecg) {
             ack('foo');
         }
     });
-};</code></pre><pre class="prettyprint source lang-html"><code>&lt;!-- nodecg/bundles/your-bundle/graphics/example.html -->
+};
+</code></pre>
+<pre class="prettyprint source lang-html"><code>&lt;!-- nodecg/bundles/your-bundle/graphics/example.html -->
 &lt;script>
 nodecg.sendMessage('example', 'hello', (error, response) => {
     console.log(response); // => Will log &quot;foo&quot;.
 });
-&lt;/script></code></pre><p>Calling an <code>acknowledgement</code> more than once will throw an error.</p>
+&lt;/script>
+</code></pre>
+<p>Calling an <code>acknowledgement</code> more than once will throw an error.</p>
 <p>In short: <strong>most bundles won't need to change any of their code</strong> to be compatible with this change, but you should give everything a once-over to make sure things aren't behaving unexpectedly due to this new behavior.</p>
-<h3 id="-a-name-intra-context-messaging-a-sendmessage-can-now-trigger-listenfor-handlers-in-the-same-context"><a name="intra-context-messaging"></a> sendMessage can now trigger listenFor handlers in the same context</h3>
+<h3 id="sendmessage-can-now-trigger-listenfor-handlers-in-the-same-context"><a name="intra-context-messaging"></a> sendMessage can now trigger listenFor handlers in the same context</h3>
 <p>Previously, NodeCG messages were inter-context only. That meant that they were <em>only</em> sent out over the network, and were not sent to other listeners in the same process context (extension, graphic, panel, etc).</p>
 <p>Now, NodeCG sends messages to every listener, regardless of location. This means that code like the following will now work as expected:</p>
 <pre class="prettyprint source lang-js"><code>// nodecg/bundles/your-bundle/extension.js
 module.exports = function (nodecg) {
     nodecg.sendMessage('hello', 'Hi there!');
-};</code></pre><pre class="prettyprint source lang-js"><code>// nodecg/bundles/my-bundle/extension.js
+};
+</code></pre>
+<pre class="prettyprint source lang-js"><code>// nodecg/bundles/my-bundle/extension.js
 module.exports = function (nodecg) {
     nodecg.listenFor('hello', 'your-bundle', data => {
         console.log(data); // => Will print &quot;Hi there!&quot;
     });
-}</code></pre><p>A side-effect of this change is that it is no longer guaranteed that a server-side <code>listenFor</code> handler will receive an <code>acknowledgement</code> callback as its second argument. You should always check for the presence of an <code>acknowledgement</code> before attempting to call it:</p>
+}
+</code></pre>
+<p>A side-effect of this change is that it is no longer guaranteed that a server-side <code>listenFor</code> handler will receive an <code>acknowledgement</code> callback as its second argument. You should always check for the presence of an <code>acknowledgement</code> before attempting to call it:</p>
 <pre class="prettyprint source lang-js"><code>// nodecg/bundles/your-bundle
 module.exports = function (nodecg) {
     nodecg.listenFor('example', (data, ack) => {
@@ -107,7 +115,9 @@ module.exports = function (nodecg) {
             ack('foo');
         }
     });
-};</code></pre><h3 id="-a-name-twitch-api-a-twitch-auth-now-uses-the-new-twitch-api-instead-of-the-deprecated-v5-api"><a name="twitch-api"></a> Twitch auth now uses the &quot;New Twitch API&quot;, instead of the deprecated &quot;v5&quot; API</h3>
+};
+</code></pre>
+<h3 id="twitch-auth-now-uses-the-%22new-twitch-api%22%2C-instead-of-the-deprecated-%22v5%22-api"><a name="twitch-api"></a> Twitch auth now uses the &quot;New Twitch API&quot;, instead of the deprecated &quot;v5&quot; API</h3>
 <p>Previously, NodeCG used the deprecated &quot;v5&quot; Twitch API.</p>
 <p>Now, NodeCG uses the &quot;New Twitch API&quot;. The only tangible result of this change for NodeCG is that the format of the <code>login.twitch.scope</code> config parameter has changed. Please see <a href="https://dev.twitch.tv/docs/authentication/#scopes">https://dev.twitch.tv/docs/authentication/#scopes</a> for documentation on this new format.</p>
 </article>
@@ -119,7 +129,7 @@ module.exports = function (nodecg) {
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 19 2019 13:40:03 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

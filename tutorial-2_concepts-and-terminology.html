@@ -71,21 +71,24 @@
 <p>Graphics are the end result that your viewers will see. NodeCG itself doesn't provide any libraries for drawing pixels, it instead lets the user decide how they want to create their graphics in the open framework of HTML5, CSS3, and JS (with ES6 being fully supported). NodeCG will also helpfully inject an API instance into the global scope of your graphics, accessible as <code>window.nodecg</code> (or just <code>nodecg</code>) from your graphic's code.</p>
 <p>Graphics are defined in your bundle's <code>package.json</code> file, in the <code>nodecg.graphics</code> section, with a few simple properties:</p>
 <ul>
-<li><code>file</code>, the relative path (from your bundle's root directory) to the HTML file to be served as a graphic.<ul>
+<li><code>file</code>, the relative path (from your bundle's root directory) to the HTML file to be served as a graphic.
+<ul>
 <li>Your graphics should all live in the <code>nodecg/your-bundle/graphics/</code> folder.</li>
 </ul>
 </li>
-<li><code>width</code> and <code>height</code>, which defines the dimensions of your graphic.<ul>
+<li><code>width</code> and <code>height</code>, which defines the dimensions of your graphic.
+<ul>
 <li>Note that your graphic doesn't have to strictly adhere to these values, they're mostly for documentation of your bundle. NodeCG doesn't enforce these values.</li>
 </ul>
 </li>
-<li><code>singleInstance</code>, an optional property, that only allows your graphic to be open in one place at a time.<ul>
+<li><code>singleInstance</code>, an optional property, that only allows your graphic to be open in one place at a time.
+<ul>
 <li>This is useful in scenarios where your graphic has fragile or highly stateful logic.</li>
 <li>Ideally, you'd never need to use <code>singleInstance</code>. However, it is sometimes hard to avoid, and can be the fastest route to shipping a complex graphic.</li>
 </ul>
 </li>
 </ul>
-<h3 id="related-docs">Related Docs</h3>
+<h3 id="related-docs-2">Related Docs</h3>
 <ul>
 <li><a href="tutorial-5_manifest.html">package.json Manifest</a></li>
 <li><a href="tutorial-7_using-npm.html">Using npm Dependencies</a></li>
@@ -99,24 +102,27 @@
 <li><code>name</code>, the internal name of your panel.</li>
 <li><code>title</code>, the title displayed on the NodeCG workspace.</li>
 <li><code>file</code>, the relative path (from your bundle's root directory) to the HTML file to be served as a dashboard panel.</li>
-<li><code>width</code>, an optional property, the amount of space the bundle takes up on the page.<ul>
+<li><code>width</code>, an optional property, the amount of space the bundle takes up on the page.
+<ul>
 <li>Valid values are <code>1-8</code>.</li>
 <li>Width scaling is arbitrary and is subject to change, play around with it.</li>
 </ul>
 </li>
-<li><code>headerColor</code>, an optional property, that will change the color of the panel's header to a provided hexadecimal color value.<ul>
+<li><code>headerColor</code>, an optional property, that will change the color of the panel's header to a provided hexadecimal color value.
+<ul>
 <li>Your <code>headerColor</code> must start with a <code>#</code> character. For example: <code>#f47425</code>.</li>
 </ul>
 </li>
 <li><code>workspace</code>, an optional property, that when set will place the panel into a new workspace with the name provided. These workspaces can be shared between bundles.</li>
-<li><code>fullbleed</code>, an optional property, that when set to true will place the panel in it's own workplace at the maximum possible width and height with no margins.<ul>
+<li><code>fullbleed</code>, an optional property, that when set to true will place the panel in it's own workplace at the maximum possible width and height with no margins.
+<ul>
 <li>Each <code>fullbleed</code> panel gets its own dedicated workspace.</li>
 </ul>
 </li>
 <li><code>dialog</code>, an optional property, that will turn the panel into a dialog that other panels are able to open.</li>
 <li><code>dialogButtons</code>, an optional property, that will show buttons for <code>confirm</code>, <code>dismiss</code>, or both on the dialog.</li>
 </ul>
-<h3 id="related-docs">Related Docs</h3>
+<h3 id="related-docs-3">Related Docs</h3>
 <ul>
 <li><a href="tutorial-5_manifest.html">package.json Manifest</a></li>
 <li><a href="tutorial-making-dialogs.html">Making Dashboard Dialogs</a></li>
@@ -134,7 +140,9 @@ module.exports = nodecg => {
     nodecg.listenFor('foo', () => {
         console.log('bar');
     });
-};</code></pre><p>NodeCG automatically attempts to load the following files as extensions:    </p>
+};
+</code></pre>
+<p>NodeCG automatically attempts to load the following files as extensions:</p>
 <ul>
 <li><code>nodecg/bundles/your-bundle/extension.js</code></li>
 <li><code>nodecg/bundles/your-bundle/extension/index.js</code></li>
@@ -142,7 +150,7 @@ module.exports = nodecg => {
 <p>Your bundle may have one of, but not both of the above files. If your extension is simple enough to fit in one file,
 use the former approach. If your extension is broken up into multiple files, you may want to use the latter structure
 and keep all those files in a single <code>extension</code> folder. If using an <code>extension</code> folder, <strong>NodeCG will only load <code>your-bundle/extension/index.js</code></strong>. It is up to you to load any other files that your extension needs via <code>require</code>.</p>
-<h3 id="related-docs">Related Docs</h3>
+<h3 id="related-docs-4">Related Docs</h3>
 <ul>
 <li><a href="NodeCG.html#extensions"><code>NodeCG#extensions</code></a></li>
 <li><a href="tutorial-5_manifest.html">package.json Manifest</a></li>
@@ -153,7 +161,7 @@ and keep all those files in a single <code>extension</code> folder. If using an 
 </ul>
 <h2 id="messages">Messages</h2>
 <p>Messages are the way NodeCG lets extensions, dashboard panels, and the graphics communicate with each other seamlessly. A message can be anything, from an array to an object to a string, as long as it can be represented in Javascript, you can send it. All you have to do is call <code>nodecg.sendMessage</code> on one end and <code>nodecg.listenFor</code> on another!</p>
-<h3 id="related-docs">Related Docs</h3>
+<h3 id="related-docs-5">Related Docs</h3>
 <ul>
 <li><a href="NodeCG.html#sendMessage"><code>NodeCG#sendMessage</code></a></li>
 <li><a href="NodeCG.html#sendMessageToBundle"><code>NodeCG#sendMessageToBundle</code></a></li>
@@ -162,7 +170,7 @@ and keep all those files in a single <code>extension</code> folder. If using an 
 <h2 id="replicants">Replicants</h2>
 <p>Replicants are how NodeCG stores and replicates data between extensions, dashboard panels, and graphics. Rather than being events like <a href="#messages">messages</a> are, Replicants are (optionally) persistent.</p>
 <p>Replicants on server-side extensions are able to be read synchronously, as NodeCG has immediate access to the database of replicants, but in dashboard panels and graphics you should read Replicants asynchronously by listening for the <code>change</code> event.</p>
-<h3 id="related-docs">Related Docs</h3>
+<h3 id="related-docs-6">Related Docs</h3>
 <ul>
 <li><a href="NodeCG.html#Replicant"><code>NodeCG#Replicant</code></a></li>
 <li><a href="tutorial-replicant-schemas.html">Replicant Validation</a></li>
@@ -176,7 +184,7 @@ and keep all those files in a single <code>extension</code> folder. If using an 
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 19 2019 13:40:03 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
