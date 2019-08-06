@@ -800,7 +800,7 @@ it <em>must</em> be declared as a <code>bundleDependency</code> in your bundle's
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line745">line 745</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line746">line 746</a>
     </li></ul></dd>
     
 
@@ -972,7 +972,7 @@ Server-side code never has to wait for Replicants.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line558">line 558</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line559">line 559</a>
     </li></ul></dd>
     
 
@@ -1145,7 +1145,7 @@ Returns undefined if a cue by that name cannot be found in this bundle.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line636">line 636</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line637">line 637</a>
     </li></ul></dd>
     
 
@@ -1311,7 +1311,7 @@ Returns the specified dialog element.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line611">line 611</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line612">line 612</a>
     </li></ul></dd>
     
 
@@ -1526,7 +1526,7 @@ Returns the specified dialog's iframe document.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line625">line 625</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line626">line 626</a>
     </li></ul></dd>
     
 
@@ -1741,7 +1741,7 @@ Gets the server Socket.IO context.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line724">line 724</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line725">line 725</a>
     </li></ul></dd>
     
 
@@ -2167,7 +2167,7 @@ See the <a href="http://expressjs.com/en/api.html#app.use">express docs</a> for 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line732">line 732</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line733">line 733</a>
     </li></ul></dd>
     
 
@@ -2251,7 +2251,7 @@ Does nothing if the cue doesn't exist or if the cue has no assigned file to play
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line649">line 649</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line650">line 650</a>
     </li></ul></dd>
     
 
@@ -2529,7 +2529,7 @@ when the user changes it on the dashboard.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line592">line 592</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line593">line 593</a>
     </li></ul></dd>
     
 
@@ -2795,7 +2795,7 @@ See <a href="tutorial-replicant-schemas.html">Replicant Validation</a> for more 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line499">line 499</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line500">line 500</a>
     </li></ul></dd>
     
 
@@ -3044,6 +3044,48 @@ applied if this Replicant has not previously been declared and if it has no pers
             <td class="description last">
                 <p>Whether to persist the Replicant's value to disk on every change.
 Persisted values are re-loaded on startup.</p>
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>persistenceInterval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    DEFAULT_PERSISTENCE_INTERVAL
+                
+                </td>
+            
+
+            <td class="description last">
+                <p>Interval between each persistence, in milliseconds.</p>
                 
             </td>
         </tr>
@@ -3778,7 +3820,7 @@ But, if a callback was provided, this return value will be <code>undefined</code
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line711">line 711</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line712">line 712</a>
     </li></ul></dd>
     
 
@@ -3861,7 +3903,7 @@ But, if a callback was provided, this return value will be <code>undefined</code
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api.js.html">api.js</a>, <a href="api.js.html#line687">line 687</a>
+        <a href="api.js.html">api.js</a>, <a href="api.js.html#line688">line 688</a>
     </li></ul></dd>
     
 
@@ -4230,7 +4272,7 @@ To remove a listener to a message in another bundle's namespace, provide it as t
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Jul 16 2019 11:35:43 GMT-0500 (Central Daylight Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Tue Aug 06 2019 18:19:01 GMT-0500 (Central Daylight Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
