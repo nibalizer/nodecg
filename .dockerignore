@@ -7,3 +7,5 @@
 !index.js
 !package.json
 !types
+!bundles
+!node_modules

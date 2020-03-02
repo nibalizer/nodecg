@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: myingressresource
+spec:
+  rules:
+  - host: nibz-k8s-vpc-5290c8c8e5797924dc1ad5d1b85b37c0-0000.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nodecg
+          servicePort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodecg
+spec:
+  selector:
+    app: nodecg
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9090
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeg-deployment
+  labels:
+    app: nodecg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodecg
+  template:
+    metadata:
+      labels:
+        app: nodecg
+    spec:
+      containers:
+      - name: nodecg
+        image: quay.io/nibalizer/nodecgibmdeveloper:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: nodecg-config
+          mountPath: "/usr/src/app/cfg"
+          readOnly: true
+      volumes:
+      - name: nodecg-config
+        secret:
+          secretName: nodecg
